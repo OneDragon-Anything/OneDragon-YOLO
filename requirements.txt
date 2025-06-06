@@ -1,1 +1,5 @@
-ultralytics==8.1.44
+--index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+jupyterlab==4.1.6
+onnx==1.16.0
+onnxruntime==1.17.1
