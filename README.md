@@ -2,31 +2,32 @@
 
 用于一条龙脚本的YOLO项目
 
-# 开发环境说明
+## 开发环境说明
 
 - Python版本 = 3.11.9
-- CUDA版本 = 12.4 Windows x86_64 Version 11
-- ultralytics = 参考[官网](https://docs.ultralytics.com/quickstart/#install-ultralytics)
-  - cuda by conda `conda install -c pytorch -c nvidia -c conda-forge pytorch torchvision pytorch-cuda=11.8 ultralytics`
-  - cpu `pip install ultralytics`。注意本方式安装的pytorch不是cuda版本的，如果在这之后想用pip安装cuda的pytorch，需要自行删除后重新安装，参考下面。
-  - cuda by pip 参考[官网](https://pytorch.org/get-started/locally/)安装(版本不一定对了) `pip install torch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 --index-url https://download.pytorch.org/whl/cu121`
-- 其他依赖 `pip install -r requirements.txt`
+- CUDA版本 = 12.6 Windows x86_64 Version 11
+- 先安装 cuda 版的 pytorch，可参考[官网](https://pytorch.org/get-started/locally/)
+  ```shell
+  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+  ```
+- 再安装 ultralytics 和 其他依赖
+  ```shell
+  pip install -r requirements.txt --index-url https://pypi.tuna.tsinghua.edu.cn/simple`
+  ```
 
-# 训练
+### 为什么不使用 uv
 
-## 数据来源
+因为 uv 安装 torch 包的时候，依赖 `markupsafe` 只有 python 3.13 版本，而 ultralytics 最高只支持 3.12
 
-- 游戏中的智库
-- [一条龙](https://github.com/DoctorReid/StarRailOneDragon)脚本运行时的自动截图
-- 手动截图补充
 
-## 分类
+## 使用
 
-[表格](labels/sr/labels.csv)
+### 数据集
 
-# 其他 
-
-## 我的探索过程
-
-1. [第一次接触YOLO](notebook/experiments/01-first-trial/first.ipynb)
-2. []
+1. 在你的电脑上找一个位置，创建一个文件夹，例如 `OneDragon-Dataset`
+2. 进入这个文件夹后，克隆所需的数据集
+    - [绝区零-迷失之地](https://www.modelscope.cn/datasets/DoctorReid/ZZZ-LostVoidDet-Dataset)
+3. 复制 `.env.example` 重命名成 `.env`，修改
+    - `DATASET_PARENT_DIR`: `OneDragon-Dataset`的目录
+4. 根据你要处理的数据集，进入到不同的package中查看运行
+    - 绝区零-迷失之地: `src/one_dragon_yolo/zzz/lost_void_det`
