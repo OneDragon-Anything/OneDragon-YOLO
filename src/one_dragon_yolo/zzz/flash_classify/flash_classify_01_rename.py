@@ -8,6 +8,8 @@ from one_dragon_yolo.zzz.flash_classify import flash_classify_env
 def main():
     project_dir = flash_classify_env.get_label_studio_project_dir()
     for sub_dir_name in os.listdir(project_dir):
+        if sub_dir_name.startswith('.'):  # 忽略隐藏文件
+            continue
         sub_dir = os.path.join(project_dir, sub_dir_name)
         for image_name in tqdm(os.listdir(sub_dir)):
             old_image_path = os.path.join(sub_dir, image_name)

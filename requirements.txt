@@ -3,3 +3,4 @@ onnx==1.16.0
 onnxruntime==1.17.1
 imagehash==4.3.2
 dotenv==0.9.9
+pyside6-fluent-widgets==1.7.0

@@ -8,3 +8,4 @@ models/
 notebook/**/yolov8*.pt
 .debug/
 .label_studio_data
+.conf/
