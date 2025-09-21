@@ -8,6 +8,7 @@ from qfluentwidgets import (setTheme, Theme, FluentWindow, FluentIcon)
 from one_dragon_yolo.gui.image_similarity_tab import ImageSimilarityTab
 from one_dragon_yolo.gui.image_classification_tab import ImageClassificationTab
 from one_dragon_yolo.gui.image_validation_tab import ImageValidationTab
+from one_dragon_yolo.gui.object_detection_tab import ObjectDetectionTab
 
 
 class ImageClassifierWindow(FluentWindow):
@@ -42,6 +43,12 @@ class ImageClassifierWindow(FluentWindow):
         self.similarity_tab = ImageSimilarityTab()
         self.similarity_tab.setObjectName('similarity_interface')
         self.addSubInterface(self.similarity_tab, FluentIcon.DELETE, '相似度删除')
+
+        # --- Object Detection Tab ---
+        self.detection_tab = ObjectDetectionTab()
+        self.detection_tab.setObjectName('detection_interface')
+        self.detection_tab.config_manager = self
+        self.addSubInterface(self.detection_tab, FluentIcon.RINGER, '目标检测')
 
     def load_config(self):
         """加载配置文件"""
