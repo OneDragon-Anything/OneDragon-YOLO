@@ -11,6 +11,8 @@ def main():
         if sub_dir_name.startswith('.'):  # 忽略隐藏文件
             continue
         sub_dir = os.path.join(project_dir, sub_dir_name)
+        if not os.path.isdir(sub_dir):  # 忽略文件
+            continue
         for image_name in tqdm(os.listdir(sub_dir)):
             old_image_path = os.path.join(sub_dir, image_name)
 

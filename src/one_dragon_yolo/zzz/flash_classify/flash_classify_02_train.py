@@ -70,7 +70,7 @@ if __name__ == '__main__':
         data=train_dataset_dir,
         trainer=FlashClassifyTrainer,
         project=ultralytics_utils.get_dataset_model_dir(dataset_name),  # 训练模型的数据（包括模型文件）的自动保存位置
-        epochs=200,
+        epochs=300,
         imgsz=640,
         batch=-1,  # 根据可使用内存 自动判断batch_size
         val=False,  # 关闭验证

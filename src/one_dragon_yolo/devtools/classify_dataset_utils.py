@@ -26,6 +26,8 @@ def split_dataset(
             # 忽略隐藏文件夹 可能是 .git 之类的
             continue
         old_class_dir_path = os.path.join(raw_dataset_dir, class_dir_name)
+        if not os.path.isdir(old_class_dir_path):
+            continue
         old_class_image_name_list = os.listdir(old_class_dir_path)
 
         # 随机打乱数组
